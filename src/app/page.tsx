@@ -1,3 +1,8 @@
+import {
+  Show,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
@@ -6,9 +11,17 @@ export default function Home() {
           AI Interview Coach
         </h1>
 
-        <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg">
-          Login
-        </button>
+        <Show when="signed-out">
+  <SignInButton mode="modal">
+    <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg">
+      Login
+    </button>
+  </SignInButton>
+</Show>
+
+<Show when="signed-in">
+  <UserButton />
+</Show>
       </nav>
 
       <section className="flex flex-col items-center justify-center text-center mt-32 px-6">
