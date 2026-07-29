@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Show,
   SignInButton,
@@ -34,9 +35,11 @@ export default function Home() {
           receive instant feedback, and land your dream job.
         </p>
 
-        <button className="mt-10 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl text-lg font-semibold">
-          Start Practicing
-        </button>
+        <Link href="/dashboard">
+  <button className="mt-10 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-xl text-lg font-semibold">
+    Start Practicing
+  </button>
+</Link>
       </section>
     </main>
   );
