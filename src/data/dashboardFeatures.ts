@@ -1,18 +1,30 @@
 export const dashboardFeatures = [
   {
-    title: "🎤 AI Mock Interview",
-    description: "Practice technical and HR interviews with AI.",
+    title: "Frontend",
+    description: "HTML, CSS, React, Next.js",
+    slug: "frontend",
+    difficulty: "Easy",
+    questions: 15,
   },
   {
-    title: "📄 Resume Review",
-    description: "Upload your resume and receive AI feedback.",
+    title: "Backend",
+    description: "Node.js, Express, SQL",
+    slug: "backend",
+    difficulty: "Medium",
+    questions: 20,
   },
   {
-    title: "📊 Interview History",
-    description: "View your previous interview sessions.",
+    title: "Full Stack",
+    description: "Frontend + Backend",
+    slug: "fullstack",
+    difficulty: "Hard",
+    questions: 25,
   },
   {
-    title: "👤 My Profile",
-    description: "Manage your account and personal information.",
+    title: "HR",
+    description: "Behavioral Questions",
+    slug: "hr",
+    difficulty: "Easy",
+    questions: 10,
   },
 ];

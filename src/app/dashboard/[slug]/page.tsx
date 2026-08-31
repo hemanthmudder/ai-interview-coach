@@ -1,5 +1,6 @@
 import { dashboardFeatures } from "@/data/dashboardFeatures";
 import { interviewQuestions } from "@/data/interviewQuestions";
+import InterviewClient from "@/components/InterviewClient";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -49,21 +50,7 @@ export default async function InterviewPage({ params }: Props) {
           </p>
         </div>
 
-        <div className="rounded-xl bg-slate-900 p-6 border border-slate-700">
-          <p className="text-sm text-slate-400">
-            Question 1 of {questions.length}
-          </p>
-
-          <h2 className="text-2xl font-semibold mt-4">
-            {questions[0].question}
-          </h2>
-
-          <div className="mt-6 rounded-lg bg-slate-800 p-4">
-            <p className="text-slate-300">
-              {questions[0].answer}
-            </p>
-          </div>
-        </div>
+        <InterviewClient questions={questions} />
       </div>
     </main>
   );

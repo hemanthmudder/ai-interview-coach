@@ -21,7 +21,8 @@ export default function DashboardPage() {
             <DashboardCard
               key={feature.title}
               title={feature.title}
-               description={feature.description}
+              description={feature.description}
+              slug={feature.slug}
              />
           ))}
         </div>
