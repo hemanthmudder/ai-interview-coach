@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import {
+  Show,
   SignInButton,
   SignUpButton,
 } from "@clerk/nextjs";
@@ -26,22 +27,22 @@ export default async function Home() {
 
         <div className="flex justify-center gap-4">
           <SignInButton
-            mode="modal"
-            forceRedirectUrl="/dashboard"
-          >
-            <button className="px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700">
-              Sign In
-            </button>
-          </SignInButton>
+  mode="modal"
+  forceRedirectUrl="/dashboard"
+>
+  <button className="px-5 py-3 rounded-lg bg-blue-600 hover:bg-blue-700">
+    Sign In
+  </button>
+</SignInButton>
 
-          <SignUpButton
-            mode="modal"
-            forceRedirectUrl="/dashboard"
-          >
-            <button className="px-5 py-3 rounded-lg border border-gray-600">
-              Sign Up
-            </button>
-          </SignUpButton>
+<SignUpButton
+  mode="modal"
+  forceRedirectUrl="/dashboard"
+>
+  <button className="px-5 py-3 rounded-lg border border-gray-600">
+    Sign Up
+  </button>
+</SignUpButton>
         </div>
       </div>
     </main>

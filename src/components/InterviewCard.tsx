@@ -1,21 +1,66 @@
-export default function InterviewCard() {
+"use client";
+
+import { useState } from "react";
+
+type Question = {
+  question: string;
+  answer: string;
+};
+
+export default function InterviewClient({
+  questions,
+}: {
+  questions: Question[];
+}) {
+  const [index, setIndex] = useState(0);
+  const [userAnswer, setUserAnswer] = useState("");
+
+  const current = questions[index];
+
+  function handleNext() {
+    setUserAnswer("");
+    setIndex((value) => value + 1);
+  }
+
+  function handlePrevious() {
+    setUserAnswer("");
+    setIndex((value) => value - 1);
+  }
+
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900 p-6">
-      <h2 className="text-xl font-bold text-white">
-        Frontend Developer
+    <section className="rounded-xl bg-slate-900 p-6 border border-slate-700">
+      <p className="text-sm text-slate-400">
+        Question {index + 1} of {questions.length}
+      </p>
+
+      <h2 className="text-2xl font-semibold mt-4">
+        {current.question}
       </h2>
 
-      <p className="mt-2 text-slate-400">
-        React, Next.js
-      </p>
+      <textarea
+        value={userAnswer}
+        onChange={(event) => setUserAnswer(event.target.value)}
+        placeholder="Type your answer here..."
+        className="mt-6 w-full min-h-40 rounded-lg bg-slate-800 border border-slate-700 p-4 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
 
-      <p className="mt-4 text-blue-400">
-        25 Questions
-      </p>
+      <div className="mt-6 flex justify-between gap-3">
+        <button
+          className="rounded-lg border border-slate-700 px-4 py-2 disabled:opacity-50"
+          onClick={handlePrevious}
+          disabled={index === 0}
+        >
+          Previous
+        </button>
 
-      <button className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-        Start Interview
-      </button>
-    </div>
+        <button
+          className="rounded-lg bg-teal-600 px-4 py-2 disabled:opacity-50"
+          onClick={handleNext}
+          disabled={index === questions.length - 1}
+        >
+          Next
+        </button>
+      </div>
+    </section>
   );
 }

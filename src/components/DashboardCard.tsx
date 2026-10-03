@@ -12,7 +12,7 @@ export default function DashboardCard({
 }: DashboardCardProps) {
   return (
     <Link href={`/dashboard/${slug}`}>
-      <div className="rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-lg hover:border-blue-500 hover:scale-105 transition-all duration-500 cursor-pointer">
+      <div className="rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-lg hover:border-blue-500 hover:scale-101 transition-all duration-300 cursor-pointer">
         <h2 className="text-2xl font-bold">{title}</h2>
 
         <p className="mt-2 text-slate-400">

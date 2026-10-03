@@ -28,7 +28,7 @@ export default async function InterviewPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white p-10">
+    <main className="min-h-screen bg-slate-900 text-white p-10">
       <div className="max-w-4xl mx-auto space-y-6">
         <h1 className="text-4xl font-bold">
           {interview.title} Interview
