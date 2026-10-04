@@ -42,7 +42,7 @@ export default function InterviewClient({
 
   async function handleSubmit() {
   try {
-    const response = await fetch("/api/civicfix/interview/evaluate", {
+    const response = await fetch("/api/interview/evaluate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
