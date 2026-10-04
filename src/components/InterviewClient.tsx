@@ -6,7 +6,12 @@ type Question = {
   question: string;
   answer: string;
 };
-
+type EvaluationResult = {
+  score: number;
+  strengths: string[];
+  weaknesses: string[];
+  feedback: string;
+};
 export default function InterviewClient({
   questions,
 }: {
@@ -17,7 +22,7 @@ export default function InterviewClient({
     Array(questions.length).fill("")
   );
 
-  const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<EvaluationResult | null>(null);
 
   const current = questions[index];
   const userAnswer = answers[index];
@@ -53,34 +58,71 @@ export default function InterviewClient({
       }),
     });
 
-    const text = await response.text();
+    const data = await response.json();
 
-    console.log("API status:", response.status);
-    console.log("API response:", text);
+console.log("API status:", response.status);
+console.log("API response:", data);
 
     if (!response.ok) {
       console.error("API request failed");
       return;
     }
-
-    setSubmitted(true);
+    setResult(data.result);
+    
   } catch (error) {
     console.error("Failed to submit interview:", error);
   }
 }
-  if (submitted) {
-    return (
-      <section className="rounded-xl bg-slate-900 p-6 border border-slate-700">
-        <h2 className="text-2xl font-semibold">
-          Interview Submitted
-        </h2>
+  if (result) {
+  return (
+    <section className="rounded-xl bg-slate-900 p-6 border border-slate-700">
+      <h2 className="text-2xl font-semibold">
+        Interview Results
+      </h2>
 
-        <p className="mt-3 text-slate-400">
-          Your answers have been collected successfully.
+      <div className="mt-6">
+        <p className="text-slate-400">Score</p>
+        <p className="text-4xl font-bold text-teal-400">
+          {result.score}%
         </p>
-      </section>
-    );
-  }
+      </div>
+
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold">
+          Strengths
+        </h3>
+
+        <ul className="mt-2 list-disc pl-5 text-slate-300">
+          {result.strengths.map((strength, index) => (
+            <li key={index}>{strength}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold">
+          Weaknesses
+        </h3>
+
+        <ul className="mt-2 list-disc pl-5 text-slate-300">
+          {result.weaknesses.map((weakness, index) => (
+            <li key={index}>{weakness}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold">
+          Feedback
+        </h3>
+
+        <p className="mt-2 text-slate-300">
+          {result.feedback}
+        </p>
+      </div>
+    </section>
+  );
+}
 
   return (
     <section className="rounded-xl bg-slate-900 p-6 border border-slate-700">
