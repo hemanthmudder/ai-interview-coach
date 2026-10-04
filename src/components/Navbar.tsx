@@ -3,7 +3,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <h1>Hemanth's AI Interview Coach</h1>
+      <h1>Hemanth&apos;s AI Interview Coach</h1>
       <button>Start Interview</button>
     </nav>
   );
